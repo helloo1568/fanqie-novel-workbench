@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-pace-triad",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "同样2600字，上一章拖，这一章又像赶火车，分别该怎么改？",
+      "expected_behavior": "应激活 fanqie-pace-triad，并分别测推进、信息负荷和情绪过程，给出定向修复。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "一章塞了五个人名、两个制度和三次反转，事情很多但读者看不懂。",
+      "expected_behavior": "应激活 fanqie-pace-triad，并识别信息过载和情绪缺口，而非继续加事件。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Diagnose whether this chapter is slow, rushed, or simply dense using pacing dimensions.",
+      "expected_behavior": "应激活 fanqie-pace-triad，并用推进—信息—情绪三维诊断。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "数据下滑，我想让AI直接重写整卷并覆盖原文。",
+      "expected_behavior": "不应激活 fanqie-pace-triad；应激活fanqie-revision-evidence-loop处理改动层级和版本。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "把这十个长句拆短一些。",
+      "expected_behavior": "不应激活 fanqie-pace-triad；纯句式编辑，不因‘短’字激活节奏skill。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这是一章慢节奏年夜饭，全章没有外部冲突，但关系明显缓和。",
+      "expected_behavior": "可先激活fanqie-chapter-state-diff确认关系变化；只有仍存在节奏疑问才调用本skill，不应机械加速。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

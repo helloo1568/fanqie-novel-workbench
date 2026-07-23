@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-character-conflict-network",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "四合院里所有邻居都只会轮流挑衅主角，像同一个反派模板，怎么改？",
+      "expected_behavior": "应激活 fanqie-character-conflict-network，并为角色建立独立诉求、不可退让点、交易资源和行为指纹。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "配角一离开主角就没有自己的事，关系也从不变化。",
+      "expected_behavior": "应激活 fanqie-character-conflict-network，并建立多边冲突网和不经主角也会发生的关系线。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "My villain suddenly becomes stupid whenever the hero needs to win. Rebuild the motivation network.",
+      "expected_behavior": "应激活 fanqie-character-conflict-network，并从身份处境推导动机、应变与立场转变证据。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "给这个路人保安起一个1965年常见名字。",
+      "expected_behavior": "不应激活 fanqie-character-conflict-network；一次性路人取名，不激活完整人物冲突网。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "冲突人物已经成立，但高潮赢完没有奖励和关系变化，爽点不落地。",
+      "expected_behavior": "不应激活 fanqie-character-conflict-network；应激活fanqie-expectation-payoff，不激活本skill。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "一章里只出现一次的车间主任，需要完整人物小传吗？",
+      "expected_behavior": "若其决策影响主线则做简化动机卡；纯功能路人不做完整网络。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

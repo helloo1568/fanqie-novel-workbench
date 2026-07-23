@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-golden-three",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "请重写这本四合院小说的黄金三章：第一章机床停摆，第三章岗位和奖金落袋。",
+      "expected_behavior": "应激活 fanqie-golden-three，并按需求缺口—危机—验证—有限兑现分配三章，并打开下一阶段。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "第一章事故很大，但主角只是围观，读者说代入不进去。",
+      "expected_behavior": "应激活 fanqie-golden-three，并把危机绑定主角迫切需求、失去代价和主动选择。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Plan the golden three chapters so the title promise is proven, not merely teased.",
+      "expected_behavior": "应激活 fanqie-golden-three，并连续展示承诺、阻力和首次状态改善。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "第87章末尾该留下什么钩子？",
+      "expected_behavior": "不应激活 fanqie-golden-three；中段单章钩子应使用fanqie-information-hook-ledger。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我把前三章的错别字找出来。",
+      "expected_behavior": "不应激活 fanqie-golden-three；校对任务，不激活黄金三章结构。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这本书已经连载50章，现在想把第48—50章称作‘第二个黄金三章’。",
+      "expected_behavior": "不按开书黄金三章调用；改用情节弧兑现或节奏诊断。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

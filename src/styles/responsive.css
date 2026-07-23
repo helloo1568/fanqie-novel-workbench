@@ -1,0 +1,129 @@
+/* ============================================================
+   响应式断点
+   ============================================================ */
+
+/* 平板（768-1024px）：两列收窄、隐藏左栏、上下文抽屉折叠 */
+@media (max-width: 1024px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .canon-grid { grid-template-columns: 1fr; }
+  .canon-grid .filter-list { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px 0; }
+  .canon-grid .filter-btn { width: auto; padding: 7px 11px; }
+  .entity-list { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .deep-summary { grid-template-columns: 1fr; }
+  .chapter-shell-layout { grid-template-columns: 180px minmax(0, 1fr); gap: 14px; padding: 18px 18px 48px; }
+  .context-open .chapter-shell-layout { grid-template-columns: 180px minmax(0, 1fr); }
+}
+
+@media (max-width: 1100px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+}
+
+/* 本产品按桌面工作台交付，不启用手机端重排。 */
+@media (max-width: 760px) and (min-width: 761px) {
+  .app-shell { display: block; }
+  .rail { width: 100%; height: auto; position: sticky; z-index: 30; padding: 10px 12px; flex-direction: row; align-items: center; overflow-x: auto; scrollbar-width: none; border-right: 0; border-bottom: 1px solid var(--line); }
+  .rail::-webkit-scrollbar { display: none; }
+  .brand { padding: 0 10px 0 0; flex: 0 0 auto; }
+  .brand span:last-child, .rail-section, .rail-bottom { display: none; }
+  .rail-nav { display: flex; gap: 3px; }
+  .rail-link { width: 40px; height: 40px; padding: 0; justify-content: center; }
+  .rail-link span { display: none; }
+  .rail-link.active { box-shadow: inset 0 -3px var(--accent); }
+  .library-rail { width: 100%; height: auto; padding: 10px 12px; align-items: center; }
+  .library-rail .brand-mark { width: 36px; height: 36px; flex-basis: 36px; }
+  .library-rail .rail-nav { width: auto; margin-top: 0; gap: 3px; }
+  .library-rail .rail-link { width: 44px; min-height: 40px; justify-content: center; padding: 0; }
+  .library-rail .rail-link svg { width: 20px; height: 20px; flex-basis: 20px; }
+  .library-rail .rail-link span { display: none; }
+  .topbar { padding: 0 14px; }
+  .content { padding: 18px 14px 40px; }
+  .page-head { align-items: stretch; flex-direction: column; gap: 12px; }
+  .grid-2, .grid-3, .field-row, .canon-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat { border-bottom: 1px solid var(--line); }
+  .find-bar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }
+  .find-bar span { grid-column: 1 / 2; }
+  .find-bar .btn:not(.icon) { grid-column: 2 / 3; }
+  .find-bar .btn.icon { grid-column: 3 / 4; grid-row: 1 / 2; }
+  .ai-rewrite-bar { grid-template-columns: minmax(0, 1fr) auto; }
+  .ai-rewrite-bar .select:not(.ai-model-select) { grid-column: 1; grid-row: 1; }
+  .ai-model-select { grid-column: 2; grid-row: 1; }
+  .ai-rewrite-bar .btn.primary { grid-column: 1 / -1; grid-row: 2; }
+  .ai-rewrite-bar .input { grid-column: 1 / -1; grid-row: 3; }
+  .ai-rewrite-bar > span { grid-column: 1 / -1; grid-row: 4; }
+  .snapshot-preview { grid-template-columns: 1fr 1fr; }
+  .snapshot-preview > div:nth-child(2) { border-right: 0; }
+  .snapshot-preview > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .deep-summary, .deep-chapters { grid-template-columns: 1fr; }
+  .deep-chapters > div:nth-child(odd) { border-right: 0; }
+
+  /* 工作台壳层 */
+  .workbench-shell { display: block; }
+  .chapter-shell-layout { display: block; padding: 14px 14px 76px; }
+  .chapter-shell-workspace { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .chapter-workspace { padding-bottom: 76px; }
+  .chapter-shell-layout > .chapter-shell-nav { display: none; }
+  .chapter-navigator { position: static; }
+  .context-drawer {
+    position: fixed; display: block; inset: 58px 0 59px auto; z-index: 45;
+    width: min(90vw, 370px); max-height: none; overflow-y: auto;
+    padding: 0 16px 18px; background: #fff; border-left: 1px solid var(--line);
+    box-shadow: -14px 0 36px rgba(28, 26, 20, .16); overscroll-behavior: contain;
+  }
+  .context-sheet-backdrop { position: fixed; display: block; inset: 58px 0 59px; z-index: 44; padding: 0; border: 0; border-radius: 0; background: rgba(28, 26, 20, .34); }
+  .context-drawer-mobile-head { position: sticky; top: 0; z-index: 4; display: flex; min-height: 48px; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid var(--line); }
+  .related-context-heading { top: 48px; padding-top: 10px; background: #fff; }
+  .mobile-workbench-nav {
+    position: fixed; display: flex; inset: auto 0 0; z-index: 50; justify-content: space-around;
+    padding: 7px 8px calc(7px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .94); backdrop-filter: blur(12px); border-top: 1px solid var(--line);
+  }
+  .mobile-workbench-nav a, .mobile-workbench-nav button { display: flex; min-width: 58px; min-height: 44px; align-items: center; justify-content: center; flex-direction: column; gap: 3px; padding: 4px 6px; line-height: 1.1; box-shadow: none; }
+  .mobile-workbench-nav a.active, .mobile-workbench-nav button.active { background: var(--accent-soft); }
+  .mobile-workbench-nav span { font-size: 10px; }
+  .workbench-header { padding-right: 12px; padding-left: 12px; gap: 8px; }
+  .workbench-heading .crumb { display: none; }
+  .workbench-heading strong { max-width: 30vw; }
+  .workbench-back span { display: none; }
+  .search-kbd { display: none; }
+  .workbench-global-search { width: min(50vw, 260px); min-width: 0; }
+  .workbench-global-search input { height: 32px; }
+  .context-drawer-toggle { font-size: 0; gap: 0; width: 36px; padding: 0; }
+  .context-drawer-toggle svg { margin: auto; }
+  .workbench-more.mobile { position: static; }
+  .workbench-more.mobile summary { min-width: 58px; min-height: 44px; justify-content: center; flex-direction: column; gap: 3px; padding: 4px 6px; }
+  .workbench-more.mobile summary .more-caret { display: none; }
+  .workbench-more.mobile .workbench-more-menu { position: fixed; right: 8px; bottom: 62px; z-index: 70; width: min(220px, calc(100vw - 16px)); padding: 6px; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: var(--shadow-md); }
+  .workbench-more.mobile .workbench-more-menu a { display: block; min-height: 0; padding: 11px; }
+  .chapter-workspace { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .chapter-nav-scroll { max-height: 230px; }
+  .chapter-editor-body { min-height: 420px; }
+  .chapter-prose-editor { min-height: 390px; }
+  .chapter-editor-head { flex-wrap: wrap; }
+  .chapter-editor-heading { flex: 1 0 100%; }
+  .chapter-editor-heading h2, .chapter-title-input { font-size: 25px; }
+  .chapter-save-button { margin-left: auto; }
+  .chapter-editor-footer { flex-wrap: wrap; }
+  .chapter-editor-footer .save-state { flex: 0 0 auto; margin-left: auto; }
+  .chapter-creation-tools, .chapter-outline-fields { grid-template-columns: minmax(0, 1fr); }
+  .editor-command-bar { flex-wrap: wrap; }
+  .editor-command-bar > span { flex: 1 0 100%; margin-left: 0; }
+
+  /* 小屏 Modal 全屏化，避免内容溢出和滚动嵌套 */
+  .modal-backdrop { padding: 0; align-items: stretch; }
+  .modal { width: 100%; max-height: 100vh; border-radius: 0; }
+  .modal.wide { width: 100%; }
+  .modal-body { padding: 16px; }
+  .modal-actions { padding: 12px 16px; border-radius: 0; }
+
+  /* 长按选择防误触：禁用非交互元素的 callout */
+  .novel-card, .entity, .chapter-nav-item, .rail-link { -webkit-touch-callout: none; }
+  /* 但允许正文编辑区正常选择 */
+  .chapter-prose-editor, .chapter-version-editor, .text-diff { -webkit-touch-callout: default; }
+
+  /* 安全区域：底部导航栏适配 iPhone home indicator */
+  .toast { right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); }
+}

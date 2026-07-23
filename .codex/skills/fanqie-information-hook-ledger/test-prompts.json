@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-information-hook-ledger",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "每章都卡悬念，但读者说一直不回答、像故意拖延，怎么查？",
+      "expected_behavior": "应激活 fanqie-information-hook-ledger，并建立钩子生命周期，检查提出、回答、接棒和三方认知变化。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "跨卷有十几个秘密，我已经记不清读者、主角和反派分别知道什么。",
+      "expected_behavior": "应激活 fanqie-information-hook-ledger，并创建三方信息差矩阵并校验角色行动依据。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Build a hook ledger so the mystery reveals remain fair and traceable across volumes.",
+      "expected_behavior": "应激活 fanqie-information-hook-ledger，并登记线索、认知、最迟回收和公平揭示。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我核验1965年北京是否已经普遍使用某型号机床。",
+      "expected_behavior": "不应激活 fanqie-information-hook-ledger；这是资料核验，不应用叙事钩子处理。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我要从零设计新书前三章的危机和首次兑现。",
+      "expected_behavior": "不应激活 fanqie-information-hook-ledger；应激活fanqie-golden-three，不激活本skill。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我在写一篇非虚构维修教程，结尾要不要留悬念？",
+      "expected_behavior": "不调用；非虚构教程优先完整准确交付信息。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-genre-length-calibration",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "工作台的通用模板像短剧公式，怎么校准成300章四合院长篇？",
+      "expected_behavior": "应激活 fanqie-genre-length-calibration，并设置年代/男频/长篇的体验权重、兑现周期、波形和考据强度。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "官方课程说每幕都要推进，这条短故事规则能直接用于百万字小说吗？",
+      "expected_behavior": "应激活 fanqie-genre-length-calibration，并做来源品类与篇幅迁移，保留功能原则、拒绝硬密度。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Calibrate the pacing and quality weights for a long historical workplace serial, not a short-form thriller.",
+      "expected_behavior": "应激活 fanqie-genre-length-calibration，并显式设置品类、篇幅、时代和时效参数。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我有三个题材点子，想知道哪个最适合我的经验并能写长。",
+      "expected_behavior": "不应激活 fanqie-genre-length-calibration；应激活fanqie-topic-promise做选题双轴。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "只想知道这一章为什么信息过载。",
+      "expected_behavior": "不应激活 fanqie-genre-length-calibration；应激活fanqie-pace-triad。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我还没决定男频还是女频，只知道想写年代家庭故事。",
+      "expected_behavior": "暂不直接激活本skill；先用fanqie-topic-promise澄清目标读者与阅读承诺，再做品类校准。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

@@ -1,0 +1,64 @@
+/* ============================================================
+   长篇工坊 · 设计 tokens
+   暖纸底色 / 赤陶品牌色 / 墨绿辅助色，统一的圆角、阴影与字阶
+   ============================================================ */
+:root {
+  font-family: "Hanken Grotesk", "PingFang SC", "Microsoft YaHei UI", system-ui, sans-serif;
+  color: #1c1c17;
+  background: #f4f0e8;
+  font-synthesis: none;
+  letter-spacing: 0;
+
+  --ink: #1c1c17;
+  --ink-soft: #414845;
+  --muted: #717975;
+  --faint: #979e9a;
+  --line: #e1ded5;
+  --line-strong: #c1c8c4;
+  --bg: #f4f0e8;
+  --paper: #fdf9f1;
+  --panel: #fffdf8;
+
+  --accent: #9d422b;
+  --accent-strong: #7e2c16;
+  --accent-soft: #ffdbd2;
+  --accent-faint: #fff4ef;
+  --green: #2f5147;
+  --green-strong: #173a31;
+  --green-soft: #e1eee9;
+  --gold: #8b620f;
+  --gold-soft: #ffdead;
+  --red: #a8443a;
+  --red-soft: #ffebe7;
+
+  --font-ui: "Hanken Grotesk", "PingFang SC", "Microsoft YaHei UI", system-ui, sans-serif;
+  --font-reading: "Source Serif 4", "Songti SC", "SimSun", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(23, 58, 49, .04), 0 5px 18px rgba(23, 58, 49, .035);
+  --shadow-md: 0 3px 8px rgba(23, 58, 49, .05), 0 18px 42px rgba(23, 58, 49, .08);
+  --shadow-lg: 0 28px 72px rgba(23, 58, 49, .18);
+  --ring: 0 0 0 3px rgba(157, 66, 43, .15);
+  --ring-green: 0 0 0 3px rgba(47, 81, 71, .14);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-width: 320px; min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+button, input, textarea, select { font: inherit; letter-spacing: 0; }
+button { cursor: pointer; }
+::selection { background: rgba(184, 70, 42, .18); }
+
+/* iOS Safari 输入框聚焦防 zoom：移动端字体不小于 16px */
+@media (max-width: 760px) {
+  .input, .textarea, .select { font-size: 16px; }
+}
+
+/* 细滚动条 */
+* { scrollbar-width: thin; scrollbar-color: #cfcbbd transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #cfcbbd; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: #b8b3a4; }
+*::-webkit-scrollbar-track { background: transparent; }

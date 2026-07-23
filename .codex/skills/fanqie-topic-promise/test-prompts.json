@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-topic-promise",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想开一本四合院维修工爽文，但只有‘能看见机器故障’这个点子，怎么判断能不能写300章？",
+      "expected_behavior": "应激活 fanqie-topic-promise，并建立作者能力轴、读者续航轴，并检验点子能否产生不同阶段冲突与收益。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "书名写的是开局修好进口机床，前三十章却主要在院里吵架，这本书的卖点是不是跑了？",
+      "expected_behavior": "应激活 fanqie-topic-promise，并对比书名、简介、开篇和正文承诺，给出保留或重签契约建议。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "I have three novel ideas. Help me choose one that fits my experience and can sustain a long serial.",
+      "expected_behavior": "应激活 fanqie-topic-promise，并使用主观能力轴与客观续航轴比较三个选题。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下SQLite FTS5的建表语法。",
+      "expected_behavior": "不应激活 fanqie-topic-promise；纯技术查询，不激活任何小说选题skill。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "题材已经定了，主角目标也明确，请把300章拆成十卷并细化未来30章。",
+      "expected_behavior": "不应激活 fanqie-topic-promise；不激活本skill，应激活fanqie-longform-rolling-outline。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "书已经写完，只想从三个书名里选一个更顺口的。",
+      "expected_behavior": "不运行完整选题双轴；最多做包装一致性快速检查。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

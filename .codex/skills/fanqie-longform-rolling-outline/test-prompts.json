@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-longform-rolling-outline",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我要写300章，怎么规划才不会后面忘掉人物状态和伏笔？",
+      "expected_behavior": "应激活 fanqie-longform-rolling-outline，并建立主线—分卷—情节弧—滚动章纲及统一时间轴。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "AI一次生成了全部章节细纲，但第20章后就和已写事实冲突，怎么重排？",
+      "expected_behavior": "应激活 fanqie-longform-rolling-outline，并保留稳定层，只详细化近期窗口并按确认事实滚动重排。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Design a rolling outline for a million-word serial with multiple character and foreshadowing lines.",
+      "expected_behavior": "应激活 fanqie-longform-rolling-outline，并构建分层规划、多线时间轴和阶段复盘机制。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这一章2600字，读者说又拖又赶，帮我诊断节奏。",
+      "expected_behavior": "不应激活 fanqie-longform-rolling-outline；应激活fanqie-pace-triad，不激活长篇规划。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "给我解释一下三幕式是什么。",
+      "expected_behavior": "不应激活 fanqie-longform-rolling-outline；纯概念解释，不必启动完整长篇规划流程。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "计划写30章、12万字，需要完整四层大纲吗？",
+      "expected_behavior": "不直接激活本skill；应先用fanqie-genre-length-calibration判断篇幅层级，再按需采用轻量主线/弧/章纲。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-chapter-state-diff",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这一章对话很顺，但删掉好像完全不影响后文，帮我判断它有什么功能。",
+      "expected_behavior": "应激活 fanqie-chapter-state-diff，并比较章前章后状态并决定保留、合并、补强或删除。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "过渡章只是从厂里走回四合院，2600字什么都没变。",
+      "expected_behavior": "应激活 fanqie-chapter-state-diff，并检查移动场景是否提供信息、关系、情绪或下一期待。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Audit this chapter outline using a before/after state diff instead of a subjective score.",
+      "expected_behavior": "应激活 fanqie-chapter-state-diff，并列目标、关系、资源、认知、风险等状态差异。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "章节有推进，但读者说信息太多、情绪太赶。",
+      "expected_behavior": "不应激活 fanqie-chapter-state-diff；应激活fanqie-pace-triad。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我写一个更漂亮的环境描写。",
+      "expected_behavior": "不应激活 fanqie-chapter-state-diff；局部文案生成，不必运行章节功能审计。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这一章没有物质收益，只写两个人和解，算不算没推进？",
+      "expected_behavior": "调用并把关系/情绪变化计入有效状态；不要求物质奖励。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

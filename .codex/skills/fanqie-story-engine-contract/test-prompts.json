@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-story-engine-contract",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角会修任何机器，但写到二十章就只剩换设备继续修，故事发动机怎么补？",
+      "expected_behavior": "应激活 fanqie-story-engine-contract，并构造双面故事支点和五要素主线，检查能力如何产生新条件。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我的设定很多，但一句话说不清主角长期要什么，也不知道反派在阻止什么。",
+      "expected_behavior": "应激活 fanqie-story-engine-contract，并写主角—困境—目标—对抗—得失主线句并锁定契约。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Turn this high-concept power into a story engine instead of a one-off gimmick.",
+      "expected_behavior": "应激活 fanqie-story-engine-contract，并从能力的收益与代价推导可持续冲突和阶段得失。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "把这段简介润色得更短一些。",
+      "expected_behavior": "不应激活 fanqie-story-engine-contract；纯文本润色，不激活故事发动机。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主线已经确认，我只需要把十卷的目标和未来30章章纲排出来。",
+      "expected_behavior": "不应激活 fanqie-story-engine-contract；应激活fanqie-longform-rolling-outline，不激活本skill。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这是一个两万字短故事，只有一次核心反转。",
+      "expected_behavior": "仅在反转无法驱动基本因果时轻量调用；不要求长篇续航测试。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

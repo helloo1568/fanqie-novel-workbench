@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+dist-server/
+
+# Runtime data (SQLite, logs, cache, models, audio)
+.data/
+
+# Local output (exports, screenshots, reports)
+output/
+playwright-report/
+test-results/
+coverage/
+
+# Playwright CLI cache
+.playwright-cli/
+
+# Internal planning / dev notes (not for open source)
+.planning/
+.superpowers/
+findings.md
+progress.md
+task_plan.md
+
+# Private/local design source exports
+docs/design/stitch/
+
+# Local novel-specific development fixtures
+scripts/seed-urban-novel.mjs
+scripts/seed-courtyard-novel.mjs
+scripts/check-context.ts
+
+# Internal corpus & course materials (copyright-sensitive, too large for repo)
+books/fanqie-course-corpus/
+books/fanqie-writing-corpus/
+books/fanqie-single-chapter-revision/
+books/courtyard-machine-tool/
+
+# Windows shortcut
+*.lnk
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python (for whisper / transcribe scripts' virtualenv)
+*.pyc
+__pycache__/
+*.venv/
+venv/
+
+# Whisper models (large binaries)
+whisper-models/

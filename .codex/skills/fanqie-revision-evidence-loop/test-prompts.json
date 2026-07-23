@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-revision-evidence-loop",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "第12章读完率突然下降，我该改单章、改五章还是动卷纲？",
+      "expected_behavior": "应激活 fanqie-revision-evidence-loop，并先定位文本证据，再选择最小有效改动层级和候选版本。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "免费模型重写后把已死人物写活了，怎么保证以后改文不覆盖事实？",
+      "expected_behavior": "应激活 fanqie-revision-evidence-loop，并保留原稿、生成候选、做事实差异和人工接受。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Design a reversible revision experiment based on chapter data and textual evidence.",
+      "expected_behavior": "应激活 fanqie-revision-evidence-loop，并执行数据定位—文本归因—候选版本—对比确认。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这一章写完到底有没有推进？先不要改。",
+      "expected_behavior": "不应激活 fanqie-revision-evidence-loop；应激活fanqie-chapter-state-diff做只读诊断。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "只改一个确定的错别字。",
+      "expected_behavior": "不应激活 fanqie-revision-evidence-loop；无需完整改文闭环，直接局部修复即可。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "有三个读者都讨厌一个配角，我是不是该删掉整条线？",
+      "expected_behavior": "可调用但先标记样本不足，结合文本功能与更多证据，不直接删除。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-expectation-payoff",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角修好第三台机器，所有人又震惊一次，但我自己都觉得不爽了。",
+      "expected_behavior": "应激活 fanqie-expectation-payoff，并比较期待、阻力、见证和结算的重复度，重建不同状态收益。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "高潮赢了，可下一章职位、奖金、人际关系都和之前一样，怎么补结算？",
+      "expected_behavior": "应激活 fanqie-expectation-payoff，并将结果写入资源、身份、关系、风险或责任并生成新期待。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "The confrontation is loud but the payoff feels hollow. Diagnose the setup, witness feedback, and settlement.",
+      "expected_behavior": "应激活 fanqie-expectation-payoff，并检查具体期待、递进阻力、爆发证据与状态结算。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "这章有没有任何状态变化？只需要告诉我能不能删。",
+      "expected_behavior": "不应激活 fanqie-expectation-payoff；应先激活fanqie-chapter-state-diff。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "给我列出番茄目前稿费政策。",
+      "expected_behavior": "不应激活 fanqie-expectation-payoff；平台规则查询，不激活爽点skill。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "这是治愈生活章，没有打脸，但人物终于愿意叫对方一声爸。",
+      "expected_behavior": "应调用广义兑现：关系与情绪状态发生不可逆变化，不强行加打脸。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

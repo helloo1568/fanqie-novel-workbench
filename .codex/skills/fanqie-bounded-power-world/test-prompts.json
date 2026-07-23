@@ -1,0 +1,52 @@
+{
+  "skill": "fanqie-bounded-power-world",
+  "version": "0.1.0",
+  "source_book": "番茄官方作家课堂全量资料集（2021—2026）",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "万物故障档案越来越万能，后面连材料和维修过程都能省，怎么限制？",
+      "expected_behavior": "应激活 fanqie-bounded-power-world，并建立来源、收益、短板、代价、复制性和权限，并保留亲手维修过程。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "系统升级后能攻击、治疗、鉴定、制造，其他人物已经没有存在价值了。",
+      "expected_behavior": "应激活 fanqie-bounded-power-world，并拆分功能、恢复世界资源与社会权限边界。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "Turn this magic ability into a bounded rule system that creates choices instead of solving everything.",
+      "expected_behavior": "应激活 fanqie-bounded-power-world，并构建六项能力卡和升级责任。",
+      "notes": "正面场景"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "能力规则没问题，但反派每次为了送资源都突然变蠢。",
+      "expected_behavior": "不应激活 fanqie-bounded-power-world；应激活fanqie-character-conflict-network。",
+      "notes": "无关或过窄任务诱饵"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我核验某种进口机床1965年的真实型号。",
+      "expected_behavior": "不应激活 fanqie-bounded-power-world；外部资料核验，不由能力规则skill完成。",
+      "notes": "跨skill混淆诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "主角没有超能力，只是比别人多十年维修经验，需要能力卡吗？",
+      "expected_behavior": "可轻量调用，把专业优势视为有限信息/技能，重点记录适用范围和权限，不建超凡升级体系。",
+      "notes": "边界场景"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "3条should_trigger、2条should_not_trigger、1条edge_case；诱饵必须全部通过，第二条诱饵为同包skill混淆测试。"
+}

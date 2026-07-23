@@ -1,0 +1,53 @@
+{
+  "name": "novel-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -P -n server,web -c cyan,green \"tsx watch server/index.ts\" \"vite {@}\" --",
+    "dev:server": "tsx watch server/index.ts",
+    "dev:web": "vite",
+    "build": "tsc -p tsconfig.server.json && vite build",
+    "start": "node dist-server/server/index.js",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "test": "vitest run",
+    "test:smoke": "node scripts/smoke-workflow.mjs",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "@fastify/static": "^10.1.0",
+    "@tanstack/react-query": "^5.83.0",
+    "archiver": "^7.0.1",
+    "better-sqlite3": "^12.11.1",
+    "diff": "^9.0.0",
+    "drizzle-orm": "^0.45.2",
+    "fastify": "^5.10.0",
+    "lucide-react": "^0.525.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.7.1",
+    "unzipper": "^0.12.5",
+    "zod": "^4.0.10"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/archiver": "^6.0.3",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.0.15",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@types/unzipper": "^0.10.11",
+    "@vitejs/plugin-react": "^4.7.0",
+    "cheerio": "^1.2.0",
+    "concurrently": "^9.2.0",
+    "html-to-text": "^10.0.0",
+    "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.5",
+    "vitest": "^3.2.4"
+  },
+  "packageManager": "pnpm@11.9.0"
+}
